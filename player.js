@@ -1,6 +1,6 @@
 function Player(){
   var size = 64;
-  var x = gameWidth / 2 - size - 2;
+  var x = gridSize * 3 + laneWidth;
   var y = gameHeight - size * 2;
 
   var pos = 2; // 123
@@ -16,7 +16,7 @@ function Player(){
 
   this.moveLeft = function(){
     if(pos > 1){
-      x -= laneWidth;
+      x -= gridSize + laneWidth;
       pos--;
     }
 
@@ -24,7 +24,7 @@ function Player(){
 
   this.moveRight = function(){
     if(pos < 3){
-      x += laneWidth;
+      x += gridSize + laneWidth;
       pos++;
     }
   }
