@@ -1,23 +1,25 @@
 
-var gameHeight = 600;
 
 var gridSize = 64;
 var laneWidth = gridSize / 3;
 
 var gameWidth = gridSize * 9 + laneWidth;
+var gameHeight = gridSize * 8;
+
 var player;
-var road;
+var roadController;
 
 
 function setup(){
   createCanvas(gameWidth, gameHeight)
   player = new Player();
-  road = new Road();
+  roadController = new RoadController();
+  // noLoop();
 }
 
 function update(){
   player.update();
-  road.update();
+  roadController.update();
 }
 
 
@@ -25,7 +27,7 @@ function draw(){
   background(51);
   scene();
 
-  road.draw();
+  roadController.draw();
   player.draw();
 
 
@@ -36,8 +38,8 @@ function draw(){
 function scene(){
   var grassSize = gridSize * 2;
   fill(0, 255, 0);
-  rect(0, 0, grassSize, gameHeight);
-  rect(gameWidth - (gridSize * 4 - laneWidth), 0, gameWidth, gameHeight);
+  rect(0, 0, grassSize - 5, gameHeight);
+  rect(gameWidth - (gridSize * 4 - laneWidth) + 5, 0, gameWidth, gameHeight);
 
 }
 

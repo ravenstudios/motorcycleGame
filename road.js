@@ -1,10 +1,9 @@
-function Road(){
+function Road(offset){
   var x = gridSize * 3;
-  var y = 100;
+  var y = offset;
   var width = laneWidth;
   var height = 64;
   var speed = 5;
-  var offset = gridSize * 3;
   this.update = function(){
     y += speed;
 
@@ -15,9 +14,37 @@ function Road(){
 
   this.draw = function(){
     fill(255, 255, 0);
-    rect(x, y, width, height);
-    rect(x + gridSize + laneWidth, y, width, height);
+    rect(x + 5, y, width - 10, height);//left
+    rect(x + gridSize + laneWidth + 5, y, width - 10, height);//right
 
-    
+
+
+
   }
+}
+
+function RoadController(){
+  var roadMarkers = [];
+
+  roadMarkers.push(new Road(gridSize * 0));
+  roadMarkers.push(new Road(gridSize * 2));
+  roadMarkers.push(new Road(gridSize * 4));
+  roadMarkers.push(new Road(gridSize * 6));
+  roadMarkers.push(new Road(gridSize * 8));
+
+
+
+  this.update = function(){
+    for (var i = 0; i < roadMarkers.length; i++) {
+      roadMarkers[i].update();
+
+    }
+  }
+
+  this.draw = function(){
+    for (var i = 0; i < roadMarkers.length; i++) {
+      roadMarkers[i].draw();
+    }
+  }
+
 }
